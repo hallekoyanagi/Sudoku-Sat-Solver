@@ -1,1 +1,1 @@
-# CSC-363-Project-1
+# CSC-322-Project-1
