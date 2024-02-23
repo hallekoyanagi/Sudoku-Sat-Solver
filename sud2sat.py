@@ -1,6 +1,6 @@
 import sys
 
-def dealWithRawData(input_str: str):
+def dealWithRawData(input_str):
     input_str = input_str.replace("\n", "")
     input_str = input_str.replace("\r", "")
     input_str = input_str.replace(" ", "")
