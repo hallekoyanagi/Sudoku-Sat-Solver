@@ -1,7 +1,8 @@
-# CSC 225 Project 1
+# CSC 322 Project 1
 by
 
-Halle Koyanagi V00913278, 
+Halle Koyanagi V00913278,
+Vyom Shah V00951024
 
 ## Basic Task Execution
 
