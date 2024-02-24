@@ -1,16 +1,16 @@
 #!/bin/bash
 
 : '
-run "bash project_euler_script.sh" to use
+run "bash top95_script.sh" to use
 finds solutions to all puzzles of the form used in the given 
-project euler file
+top95 file
 gives total CPU time, avg CPU time and number of unsatisfiable
 puzzles
 DO NOT HAND IN
 '
 
-project_euler=`cat project_euler.txt`
-filelen=${#project_euler}
+top95=`cat top95.txt`
+filelen=${#top95}
 
 curlen=0
 unsatisfiable=0
@@ -19,10 +19,11 @@ totpuzzles=0
 
 touch solution.txt
 
-while [ $curlen -le $filelen ]
-do
-  puzzle=${project_euler:curlen+7:90}
-  curlen=$((curlen + 98))
+# while [ $curlen -le $filelen ]
+# do
+  puzzle=${top95:curlen:81}
+  echo $puzzle
+  curlen=$((curlen + 81))
 
   echo "$puzzle" > curpuzzle.txt
   python sud2sat.py < curpuzzle.txt > puzzle.cnf
@@ -51,11 +52,11 @@ do
   fi
 
   totpuzzles=$((totpuzzles+1))
-done
+# done
 
 # calculate avg cpu time
-bc -l <<< "scale=6; $CPUtime / $totpuzzles" > temp.txt
-CPUavg=`cat temp.txt`
+CPUavg=$(echo "$CPUtime/$totpuzzles"|bc)
+bc <<< 'scale=6; $CPUtime/$totpuzzles' > temp.txt
 
 echo "Total Puzzles Evaluated: $totpuzzles"
 echo "Total Unsatisfiable Puzzles: $unsatisfiable"
