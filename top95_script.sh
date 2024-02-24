@@ -17,14 +17,14 @@ unsatisfiable=0
 CPUtime=0
 totpuzzles=0
 
+rm solution.txt
 touch solution.txt
 
-# while [ $curlen -le $filelen ]
-# do
-  puzzle=${top95:curlen:81}
-  echo $puzzle
-  curlen=$((curlen + 81))
-
+while [ $curlen -le $filelen ]
+do
+  puzzle=${top95:curlen:82}
+  curlen=$((curlen + 82))
+  
   echo "$puzzle" > curpuzzle.txt
   python sud2sat.py < curpuzzle.txt > puzzle.cnf
   minisat puzzle.cnf assign.txt > stat.txt
@@ -52,11 +52,11 @@ touch solution.txt
   fi
 
   totpuzzles=$((totpuzzles+1))
-# done
+done
 
 # calculate avg cpu time
-CPUavg=$(echo "$CPUtime/$totpuzzles"|bc)
-bc <<< 'scale=6; $CPUtime/$totpuzzles' > temp.txt
+bc -l <<< "scale=6; $CPUtime / $totpuzzles" > temp.txt
+CPUavg=`cat temp.txt`
 
 echo "Total Puzzles Evaluated: $totpuzzles"
 echo "Total Unsatisfiable Puzzles: $unsatisfiable"
