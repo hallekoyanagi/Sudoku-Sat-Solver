@@ -14,7 +14,8 @@ filelen=${#project_euler}
 
 curlen=0
 unsatisfiable=0
-CPUtime=0
+CPUtotal=0
+CPUworst=0
 totpuzzles=0
 
 touch solution.txt
@@ -40,7 +41,13 @@ do
   temp=`cat temp.txt`
   cut -d "s" -f 1 <<< $temp > temp.txt
   temp=`cat temp.txt`
-  CPUtime=$(echo "$CPUtime + $temp"|bc)
+  CPUtotal=$(echo "$CPUtotal + $temp"|bc)
+
+  # find if worst CPU time
+  if (($(echo "$CPUworst < $temp"|bc -l)))
+  then
+    CPUworst=$temp
+  fi
 
   # find if unsatisfiable
   cat stat.txt | grep -E 'SATISFIABLE' > temp.txt
@@ -54,13 +61,14 @@ do
 done
 
 # calculate avg cpu time
-bc -l <<< "scale=6; $CPUtime / $totpuzzles" > temp.txt
+bc -l <<< "scale=6; $CPUtotal / $totpuzzles" > temp.txt
 CPUavg=`cat temp.txt`
 
 echo "Total Puzzles Evaluated: $totpuzzles"
 echo "Total Unsatisfiable Puzzles: $unsatisfiable"
-echo "Total CPU Time: $CPUtime s"
-echo "Average CPU Time: $CPUavg s"
+echo "Total CPU Time: 0$CPUtotal s"
+echo "Worst CPU Time: $CPUworst s"
+echo "Average CPU Time: 0$CPUavg s"
 
 rm temp.txt
 rm cursol.txt
