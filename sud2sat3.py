@@ -14,7 +14,7 @@ def dealWithRawData(input_str):
 def getVariables(x, y, z):
     return str(81*(x-1) + 9*(y-1) + (z-1) + 1)
 
-def  minimalEncoding():
+def  extendedEncoding():
     cnf = []
     
     # There is at least one number in each entry
@@ -88,7 +88,7 @@ def  minimalEncoding():
     return cnf
 
 def sud2sat(problem):
-    cnf = minimalEncoding()
+    cnf = extendedEncoding()
     
     # unit clauses representing the pre-assigned entries
     for x in range(1, 10):
