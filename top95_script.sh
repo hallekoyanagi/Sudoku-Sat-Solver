@@ -27,7 +27,7 @@ do
   curlen=$((curlen + 82))
   
   echo "$puzzle" > curpuzzle.txt
-  python sud2sat.py < curpuzzle.txt > puzzle.cnf
+  python sud2sat3.py < curpuzzle.txt > puzzle.cnf
   minisat puzzle.cnf assign.txt > stat.txt
   python sat2sud.py < assign.txt > cursol.txt
   cat solution.txt cursol.txt > temp.txt
