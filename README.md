@@ -87,8 +87,8 @@ Execute the following code in a Linux environment
 python sud2sat2.py < puzzle.txt > puzzle.cnf
 cat puzzle.cnf
 ~~~
-![alt text](image-8.png)
 
+![alt text](image-11.png)
 
 ### Enter the Sudoku in SAT format into the minisat to solve
 ~~~
@@ -112,7 +112,7 @@ Execute the following code in a Linux environment
 python sud2sat3.py < puzzle.txt > puzzle.cnf
 cat puzzle.cnf
 ~~~
-![alt text](image-5.png)
+![alt text](image-8.png)
 
 
 ### Enter the Sudoku in SAT format into the minisat to solve
