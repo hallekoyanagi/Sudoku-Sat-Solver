@@ -16,14 +16,6 @@ def getVariables(x, y, z):
 
 def  efficientEncoding():
     cnf = []
-
-    # There is at most one number in each cell
-    for x in range(1, 10):
-        for y in range(1, 10):
-            for z1 in range(1, 9):
-                for z2 in range(z1 + 1, 10):
-                    clause = ["-" + getVariables(x, y, z1), "-" + getVariables(x, y, z2)]
-                    cnf.append(clause)
     
     # There is at least one number in each entry
     for x in range(1, 10):
@@ -60,7 +52,13 @@ def  efficientEncoding():
                             for l in range(1, 4):
                                 clause = ["-" + getVariables(3*i+x, 3*j+y, z), "-" + getVariables(3*i+k, 3*j+l, z)]
                                 cnf.append(clause)
-    
+    # There is at most one number in each cell
+    for x in range(1, 10):
+        for y in range(1, 10):
+            for z1 in range(1, 9):
+                for z2 in range(z1 + 1, 10):
+                    clause = ["-" + getVariables(x, y, z1), "-" + getVariables(x, y, z2)]
+                    cnf.append(clause)
     return cnf
 
 def sud2sat(problem):
