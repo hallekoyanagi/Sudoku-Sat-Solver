@@ -1,8 +1,8 @@
 # CSC 322 Project 1
 By 
-Halle Koyanagi V00913278,
-Vyom Shah V00951024,
-Wenzhe Shi V00968344
+Halle Koyanagi,
+Vyom Shah,
+Wenzhe Shis
 
 ## Shell Commands
 
