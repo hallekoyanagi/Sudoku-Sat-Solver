@@ -1,4 +1,4 @@
-# CSC 322 Project 1
+# Sudoku SAT Solver
 
 By
 Halle Koyanagi,
